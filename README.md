@@ -1,6 +1,6 @@
-# 🔐 Backend - Autenticación Híbrida con Microsoft Entra ID (OIDC) y Login Local
+#  Backend - Autenticación Híbrida con Microsoft Entra ID (OIDC) y Login Local
 
-## 🧩 Descripción General
+##  Descripción General
 
 Este servicio implementa una autenticación híbrida en el sistema, integrando **Microsoft Entra ID** mediante **OIDC (OpenID Connect)** para permitir **Single Sign-On (SSO)** para la mayoría de los usuarios. El usuario **administrador** conserva el flujo de autenticación local existente.
 
@@ -8,7 +8,7 @@ El sistema contempla además el **autoaprovisionamiento dinámico** de usuarios 
 
 ---
 
-## 🎯 Objetivo
+##  Objetivo
 
 - Eliminar autenticación obsoleta basada en LDAP.
 - Integrar SSO corporativo con Microsoft Entra ID.
@@ -18,16 +18,16 @@ El sistema contempla además el **autoaprovisionamiento dinámico** de usuarios 
 
 ---
 
-## 🛠️ Arquitectura General
+##  Arquitectura General
 
 Frontend: Angular  
 Backend: Spring Boot  
 Bases de datos: SQL Server (perfiles/usuarios), Oracle (otros)  
 Proveedor de Identidad: Microsoft Entra ID (OIDC v2.0)  
 
-> ✳️ **SCIM fue descartado**, el aprovisionamiento se hace al momento del login.
+>  **SCIM fue descartado**, el aprovisionamiento se hace al momento del login.
 
-### 📌 Diagrama de Arquitectura
+###  Diagrama de Arquitectura
 
 ```plantuml
 @startuml
@@ -78,7 +78,7 @@ SpringBootBackend --> AppDatabase : (3) Consulta loginId → flag
 
 ---
 
-### 🔄 Autoaprovisionamiento (por OIDC)
+###  Autoaprovisionamiento (por OIDC)
 
 - Se crea o actualiza el usuario al momento del login vía OIDC.
 - Se extraen los siguientes claims del ID Token: 
@@ -92,7 +92,7 @@ SpringBootBackend --> AppDatabase : (3) Consulta loginId → flag
 
 ---
 
-### 🔐 Token OIDC (Ejemplo)
+### Token OIDC (Ejemplo)
 
 ```
 {
@@ -108,9 +108,9 @@ SpringBootBackend --> AppDatabase : (3) Consulta loginId → flag
 
 ---
 
-### ⚙️ Configuración Técnica
+###  Configuración Técnica
 
-#### 📄 application.yml
+####  application.yml
 
 ```
 spring:
@@ -122,7 +122,7 @@ spring:
 ```
 
 
-#### 📦 Dependencias
+####  Dependencias
 ```
 <dependency>
   <groupId>org.springframework.boot</groupId>
@@ -135,7 +135,7 @@ spring:
 </dependency>
 ```
 
-#### ⚙️ Archivo Weblogic.xml
+####  Archivo Weblogic.xml
 
 - Se agrega el container-descriptor para que sea tenido en cuenta la dependencia en entorno de weblogic.
 
@@ -149,7 +149,7 @@ spring:
     </container-descriptor>
 ```
 
-#### 🧪 Endpoints Involucrados
+####  Endpoints Involucrados
 
 ```
 @PostMapping("/security/auth/method")
@@ -163,7 +163,7 @@ public ResponseEntity<Map<String, Object>> oidcToken(@RequestBody OidcTokenReque
 
 - /auth/oidc-token: Valida el token de Entra ID y gestiona el aprovisionamiento.
 
-#### 🧬 Lógica de Aprovisionamiento en Código
+####  Lógica de Aprovisionamiento en Código
 
 El metodo contiene el flujo de aprovisionamiento, validación de usuario y actualización de los datos del usuario.
 
@@ -188,7 +188,7 @@ public UserDTO authenticationWithSSO(Jwt jwt) {
 }
 ```
 
-#### 👤 Estructura del Usuario (respuesta del backend)
+####  Estructura del Usuario (respuesta del backend)
 
 ```
 {
@@ -222,7 +222,7 @@ public UserDTO authenticationWithSSO(Jwt jwt) {
 }
 ```
 
-#### 🛡️ Filtro de Seguridad JWT
+####  Filtro de Seguridad JWT
 
 Clase: JwtFilter
 Responsable de interceptar las peticiones y validar tokens internos u OIDC.
@@ -231,7 +231,7 @@ Responsable de interceptar las peticiones y validar tokens internos u OIDC.
 - Si no, se intenta como OIDC.
 - Si ambos fallan → 401 Unauthorized.
 
-#### 📂 Ubicación del Código Clave
+####  Ubicación del Código Clave
 
 Ubicación del Código Clave
 
@@ -242,7 +242,7 @@ Ubicación del Código Clave
 
 ---
 
-#### 📎 Referencias
+####  Referencias
 
 Fuentes:
 
@@ -272,6 +272,7 @@ Overview of the Microsoft Authentication Library (MSAL) - Microsoft identity pla
 
 Graph API
 Azure AD Graph API Entity and Complex Type Reference | Microsoft Learn: https://learn.microsoft.com/es-es/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity
+
 
 
 
