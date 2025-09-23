@@ -2,7 +2,7 @@
 
 ##  Descripción General
 
-Este módulo implementa un sistema de autenticación híbrido en una aplicación Angular, integrando autenticación por Microsoft Entra ID (mediante OIDC y MSAL) y login local para usuarios tipo "admin". Permite autenticación vía SSO, aprovisionamiento automático desde backend, y protección de rutas en el frontend.
+Este módulo implementa un sistema de autenticación híbrido en una aplicación Angular, integrando autenticación por Microsoft Entra ID (mediante OIDC y MSAL) y login local para usuarios tipo "admin". Permite autenticación vía SSO, aprovisionamiento automático desde backend, y protección de rutas en el frontend. 
 
 ##  Tecnologías Utilizadas
 
