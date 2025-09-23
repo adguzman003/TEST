@@ -4,7 +4,7 @@
 
 Este servicio implementa una autenticación híbrida en el sistema, integrando **Microsoft Entra ID** mediante **OIDC (OpenID Connect)** para permitir **Single Sign-On (SSO)** para la mayoría de los usuarios. El usuario **administrador** conserva el flujo de autenticación local existente.
 
-El sistema contempla además el **autoaprovisionamiento dinámico** de usuarios desde Entra ID usando información obtenida vía OIDC (ya que SCIM fue descartado por restricciones del cliente).
+El sistema contempla además el **autoaprovisionamiento dinámico** de usuarios desde Entra ID usando información obtenida vía OIDC (ya que SCIM fue descartado por restricciones del cliente). 
 
 ---
 
@@ -272,6 +272,7 @@ Overview of the Microsoft Authentication Library (MSAL) - Microsoft identity pla
 
 Graph API
 Azure AD Graph API Entity and Complex Type Reference | Microsoft Learn: https://learn.microsoft.com/es-es/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity
+
 
 
 
